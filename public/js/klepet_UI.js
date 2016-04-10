@@ -54,6 +54,19 @@ function filtirirajVulgarneBesede(vhod) {
 
 $(document).ready(function() {
   var klepetApp = new Klepet(socket);
+  
+  socket.on('dregljaj', function(){
+    
+    $('#vsebina').jrumble();
+    $('#vsebina').trigger('startRumble');
+    //delay setTimeout( function_reference, timeoutMillis );
+    
+    setTimeout(function(){
+       $('#vsebina').trigger('stopRumble');
+    },1500);
+    
+    
+  });
 
   socket.on('vzdevekSpremembaOdgovor', function(rezultat) {
     var sporocilo;
